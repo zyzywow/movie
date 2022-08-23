@@ -129,6 +129,21 @@ a {
       }
     }
   }
+  .myPage {
+    padding-bottom: 60px;
+    .infoBox {
+      font-size: 18px;
+      display: flex;
+      padding: 20px;
+
+      .label {
+        font-weight: 500;
+        width: 100px;
+        border-right: 1px solid #999;
+        margin-right: 20px;
+      }
+    }
+  }
 }
 
 form {

@@ -52,12 +52,10 @@ passport.use(
   )
 );
 passport.serializeUser((user, done) => {
-  // console.log("serializeUser===", user);
   done(null, user.userID);
 });
 passport.deserializeUser((id, done) => {
   db.collection("member").findOne({ userID: id }, (err, result) => {
-    // console.log(result);
     done(null, result);
   });
 });
