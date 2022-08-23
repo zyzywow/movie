@@ -2,22 +2,7 @@
 <main id="main">
   <div id="contents">
     <h2 class="title"><%= title %></h2>
-    <!-- <div class="joinForm">
-      <div class="inputBox">
-        <label>
-          <span>ID</span>
-          <input type="text" id="userID" name="userID" placeholder="아이디를 입력하세요." />
-        </label>
-      </div>
-      <div class="inputBox">
-        <label>
-          <span>Password</span>
-          <input type="password" id="userPW" name="userPW" placeholder="비밀번호를 입력하세요." />
-        </label>
-      </div>
-      <button id="btnJoin">회원가입</button>
-    </div> -->
-    <!-- <hr /> -->
+
     <form action="/register" method="POST" id="join" class="formBox">
       <div class="inputBox">
         <label>
@@ -80,7 +65,7 @@
       </div>
       <div class="btns">
         <button id="btnJoin">회원가입</button>
-        <button type="reset" class="red">취소</button>
+        <button type="reset" class="red"><a href="/" class="red02">취소</a></button>
       </div>
     </form>
   </div>

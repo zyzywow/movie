@@ -73,6 +73,9 @@ a {
   height: 50px;
   border: 1px solid #000;
 }
+#contents .btns .red02 {
+  border: none;
+}
 #contents .success {
   display: flex;
   flex-direction: column;
@@ -213,8 +216,10 @@ form .btns button {
   font-weight: 700;
 }
 form .btns .red {
+  display: flex;
   background-color: rgb(136, 42, 42);
   color: #fff;
+  justify-content: center;
 }
 
 .table {
