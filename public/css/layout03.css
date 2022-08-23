@@ -1,0 +1,70 @@
+.notFound {
+  background-color: rgb(0, 0, 187);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.notFound .error {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.notFound .error h2 {
+  font-size: 15em;
+  font-weight: 300;
+  text-shadow: 10px 10px 10px rgba(51, 51, 51, 0.5);
+}
+.notFound .error p {
+  font-weight: 300;
+  line-height: 2;
+}
+.notFound .error .gray {
+  background-color: #999;
+  font-size: 28px;
+  width: 200px;
+  color: rgb(0, 0, 187);
+  margin-bottom: 50px;
+}
+.notFound .home {
+  margin-top: 30px;
+}
+.notFound .home a {
+  display: inline-block;
+  padding: 20px 40px;
+  background-color: #fff;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(0, 0, 187);
+  text-decoration: none;
+}
+
+.errorBox {
+  background-color: #fff;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: clamp(24px, 5vw, 64px);
+}
+.errorBox .home {
+  margin-top: 30px;
+}
+.errorBox .home a {
+  display: inline-block;
+  padding: 20px 40px;
+  background-color: #bf0c14;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}

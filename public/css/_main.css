@@ -1,0 +1,378 @@
+/* common */
+/* 공통요소들은 클래스로묶어서 중복제거하고 그 중에 개별요소 적용할거는 아이디로접근해서 하나씩고치기 */
+.section {
+  padding: 100px 0;
+}
+.section .titleBox {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #555;
+}
+.section .titleBox h2 {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.section .titleBox p {
+  line-height: 1.5;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+#mainVisual {
+  overflow: hidden;
+}
+
+#mainVisual li {
+  background-size: cover;
+  /* 백그라운드이미지삽입은 넓이100%로 자동맞춤됌. 높이만주면됌 html이미지삽입은 넓이변경해야함 */
+  /* background-size: contain; */
+  /* contain 가로넓이 종횡비 비율유지하는태그, 짤리지않고 가득채우기,이미지를 다보여주는경우 */
+  /* background-size: cover; */
+  /* cover 가로넓이 종횡비 유지하면서, 자르면서 가득채우기 */
+  height: 100vh;
+  /* height: 100vh; */
+  /* 100vh 화면높이100% */
+  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
+  /* 이미지 반복하지않는 태그, 연속으로2개붙는경우 */
+}
+
+#mainVisual .visual01 {
+  background-image: url("../images/main/mainVisual01.jpg");
+}
+#mainVisual .visual02 {
+  background-image: url("../images/main/mainVisual02.jpg");
+}
+#mainVisual .visual03 {
+  background-image: url("../images/main/mainVisual03.jpg");
+}
+
+#mainVisual .slogan {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+}
+#mainVisual .slogan h2 {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 30px;
+  text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+  /*그림자주는것, 1번째 x축 2번째 y축 3번째 흐릿한정도 */
+}
+#mainVisual .slogan p {
+  font-size: 20px;
+  line-height: 1.5;
+  /* 줄과 줄사이간격 */
+}
+#mainVisual button {
+  background: none;
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  padding: 0;
+  width: 80px;
+  height: 80px;
+  border: 1px rgba(0, 0, 0, 0.5);
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+#mainVisual .prev {
+  left: 50px;
+}
+#mainVisual .next {
+  right: 50px;
+}
+#mainVisual button .material-icons {
+  font-size: 64px;
+  vertical-align: top;
+  /* inline-block요소들이 원래 가지고 있는 하단 여백을 없애는 방법 */
+}
+/* 버튼안에 화살표크기만 키우기, 버튼에 직접주면안됌*/
+#mainVisual .iconScroll {
+  position: absolute;
+  bottom: 50px;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  /* 블럭요소에 텍스트얼라인센터쓰면 그안에'글자'를 가운데로옮길수있음 */
+  width: 100%;
+}
+#mainVisual .iconScroll .icon {
+  /*마우스본체부분*/
+  border: 2px solid #fff;
+  width: 30px;
+  height: 50px;
+  display: block;
+  /* 넓이값이 있는 블럭요소를 가운데로옮길때 마진왼,오 auto주면가능 */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  border-radius: 100px;
+}
+#mainVisual .iconScroll .icon::before {
+  /*마우스스크롤부분*/
+  content: "";
+  display: block;
+  width: 2px;
+  height: 10px;
+  background-color: #fff;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px; */
+  margin: 10px auto 0;
+  animation: mouseAnimation 0.75s ease-in-out 0s infinite alternate;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  /* animation-direction: alternate; 왔다갔다반복하기, 애니메이션 트랜스폼2개있을때 좋음 */
+  animation-name: mouseAnimation;
+  animation-duration: 1s; /*애니메이션 발동시간*/
+  animation-iteration-count: infinite; /*애니메이션 몇번할지 횟수 무한은infinite*/
+}
+/*밑처럼 애니메이션 주고싶은 효과정하고 위처럼 주고싶은곳에 애니메이션 지정하기 (이름,시간,횟수)*/
+
+#quickMenu {
+  padding: 0;
+}
+
+
+#quickMenu .container ul {
+  display: flex;
+}
+#quickMenu .container ul li {
+  overflow: hidden;
+  position: relative;
+}
+#quickMenu .container ul li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+#quickMenu .container ul li:hover::before {
+  opacity: 1;
+}
+
+
+#quickMenu .container ul li .txtBox {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  color: #fff;
+}
+#quickMenu .container ul li .txtBox p {
+  font-size: 20px;
+}
+#quickMenu .container ul li .txtBox h3 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+/* 글자위아래 단락사이 같은곳을 위에서마진바텀30 아래서 마진바텀50주면 합이80이먹는게아니라 두숫자중 큰거만먹음 즉 마진50만먹음. */
+/* 상하 마진이 겹치면 큰것만 먹는다. 마진병합 현상 */
+#quickMenu .container ul li img {
+  vertical-align: top;
+  transition: transform 0.5s ease-in-out;
+}
+#quickMenu .container ul li:hover img {
+  transform: scale(1.2);
+}
+
+/* quickMenu end */
+
+#business {
+  /* background-color: #ccc; */
+  background-image: url("../images/main/bgBusiness.jpg");
+  margin-top: 100px;
+}
+
+#business .container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  /* align-content는 wrap 속성이 적용되어서 두줄이상 일때 정렬 */
+  /* align-items는 한줄에대한것, align-content은wrap을해서 두줄이상되었을때 세로정렬하는것 */
+  height: 720px;
+}
+#business .container ul li {
+  overflow: hidden;
+  position: relative;
+}
+#business .container ul li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#business .container ul li .txtBox {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  color: #fff;
+}
+#business .container ul li .txtBox h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#business .container ul li img {
+  vertical-align: top;
+  transition: transform 0.5s ease-in-out;
+}
+#business .container ul li:hover::before {
+  opacity: 1;
+}
+#business .container ul li:hover img {
+  transform: scale(1.1);
+}
+
+/* --------------business end -------------*/
+#news .list {
+  display: flex;
+  justify-content: space-between;
+}
+#news .list li {
+  /* flex-basis: ;
+  부모가 플렉스가졌을때 넓이조절,크기정하는 것
+  flex-grow: ;
+  남아있는 여백어떻게처리할것인지
+  flex-shrink: ;  */
+  width: 31.33%;
+  /* 좌우 넓이 조절해서 여백만들기도가능 마진없이도*/
+  border: 1px solid #999;
+  position: relative;
+  transition: all 0.25s ease-in-out;
+}
+#news .list li:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+#news .list li::after {
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 0px #bf0c14;
+  /* 퍼짐의 정도 0 0 0 ~px , 박스쉐도우는 레이아웃에영향 x, border는영향있음*/
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+#news .list li:hover::after {
+  box-shadow: inset 0 0 0 2px #bf0c14;
+}
+
+#news .list li img {
+  width: 100%;
+  height: 380px;
+  /* 이미지넓이는 맞는데 높이가제각각일떄 height: ~px; 억지로주지않기 이미지짤림*/
+  object-fit: cover;
+}
+#news .list li .desc {
+  padding: 30px;
+}
+#news .list li .desc h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* white-space: nowrap;
+  글자를 한줄로 만들기
+  overflow: hidden;
+  흘러넘친영역보이지않게
+  text-overflow: ellipsis;
+  텍스트가 길어서 ...만들때 쓰는 세트,여러줄은안됌 한줄만가능 */
+}
+
+#news .list li .desc .txt {
+  line-height: 1.5;
+  height: 4.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  /* 텍스트여러줄일때 ...만들기 */
+  margin-bottom: 30px;
+}
+#news .list li .desc .date {
+  color: #999;
+}
+
+/* news end */
+
+
+#customer {
+  background-image: url(../images/main/bgCustomer.jpg);
+}
+#customer .titleBox h2::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: #fff;
+  margin: 30px auto;
+  /* 블럭요소 가운데정렬할때 */
+}
+
+#customer .titleBox {
+  color: #fff;
+  margin-bottom: 0;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.btns .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #bf0c14;
+  color: #fff;
+  padding: 0 40px;
+  border-radius: 100px;
+  margin: 0 5px;
+}
+/* customer end */
+
+@keyframes mouseAnimation {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}

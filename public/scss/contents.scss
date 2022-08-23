@@ -1,0 +1,910 @@
+@import "vars";
+@import "mixin";
+
+.subVisual {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  background: {
+    repeat: no-repeat;
+    size: cover;
+    position: 50% 50%;
+  }
+  .titleBox {
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+    .subTitle {
+      font-size: $font-large;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+  }
+  #lnb {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 50px;
+    &.fixed {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    .container {
+      display: flex;
+      .home {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        text-indent: -999px;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        &:before {
+          text-indent: 0;
+          font-size: 24px;
+          color: #fff;
+          @include icon("home", 0);
+        }
+      }
+      .menu {
+        width: 200px;
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
+        &:nth-of-type(2) button {
+          border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        button {
+          border: none;
+          background: none;
+          width: 100%;
+          height: 50px;
+          padding: 0 20px;
+          text-align: left;
+          color: #fff;
+          font-size: 16px;
+          border-left: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        ul {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-top: none;
+          display: none;
+          li {
+            border: 1px solid #ccc;
+            a {
+              display: block;
+              padding: 0 20px;
+              height: 50px;
+              line-height: 50px;
+              // 높이준만큼 라인하이트같은값주면 세로중앙
+              color: #666;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  &:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, $main-color 0%, $main-color 50%, #ccc 50%, #ccc 100%);
+    margin-right: 15px;
+  }
+}
+@for $i from 1 to 6 {
+  #subVisual0#{$i} {
+    background-image: url("../images/contents/subVisual0#{$i}.jpg");
+  }
+}
+
+.tab {
+  .tabMenu {
+    display: flex;
+    li {
+      flex-basis: 25%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-left: none;
+      &.active {
+        border-color: $main-color;
+        a {
+          background-color: $main-color;
+          color: #fff;
+        }
+      }
+      a {
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.tabContents {
+  position: relative;
+  > li {
+    display: none;
+    &:nth-child(1) {
+      display: block;
+    }
+    // &:target {
+    //   display: block;
+    // }
+    // &:not(:target) {
+    //   display: none;
+    // }
+  }
+}
+
+.subContents {
+  min-height: 100vh;
+  // margin-bottom: 100px;
+  .contentsTitle {
+    font-size: $font-large - 10px;
+    font-weight: 700;
+    text-align: center;
+    margin: 80px 0;
+    &:after {
+      @include pseudo(block, relative, "");
+      @include box(40px, 5px, $main-color);
+      margin: 30px auto;
+    }
+  }
+  .desc {
+    text-align: center;
+    margin-top: 50px;
+    .headTxt {
+      font-size: $font-large;
+      line-height: 1.25;
+      font-weight: 300;
+      margin-bottom: 50px;
+      strong {
+        font-weight: 500;
+        .red {
+          color: $main-color;
+        }
+      }
+    }
+    .txtBox {
+      text-align: justify;
+      p {
+        margin-bottom: 50px;
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+    }
+  }
+}
+#introduce {
+  .summaryBox {
+    display: flex;
+    .txtBox {
+      width: 50%;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: {
+        color: $main-color;
+        position: right 0 bottom 0;
+        repeat: no-repeat;
+        image: url("../images/contents/bg_logo.png");
+      }
+
+      .main {
+        font-size: $font-large;
+        font-weight: 700;
+        &:after {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 2px;
+          background-color: rgba(255, 255, 255, 0.5);
+          margin: 20px auto;
+        }
+      }
+      .sub {
+        line-height: 1.5;
+        font-size: 20px;
+      }
+    }
+  }
+}
+#greeting {
+  .container {
+    display: flex;
+    img {
+      align-self: flex-start;
+    }
+  }
+  .desc {
+    text-align: left;
+    padding-left: 80px;
+    margin-top: 0;
+    .txtBox {
+      text-align: left;
+      p {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+#history {
+  .historyBox {
+    margin-top: 150px;
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: #ccc;
+    }
+    .yearBox {
+      display: flex;
+      padding: 50px 0;
+      position: relative;
+
+      &:nth-child(2n) {
+        justify-content: flex-end;
+        padding-left: 100px;
+        .inner .year::before {
+          left: -60px;
+        }
+      }
+      &:nth-child(2n + 1) {
+        text-align: right;
+        padding-right: 100px;
+        .inner {
+          .year:before {
+            right: -60px;
+          }
+          .monthBox {
+            li {
+              flex-direction: row-reverse;
+              .month {
+                margin-right: 0;
+                margin-left: 20px;
+              }
+            }
+          }
+        }
+      }
+      .inner {
+        width: 50%;
+
+        .year {
+          font-size: $font-large;
+          font-weight: 700;
+          margin-bottom: 30px;
+          position: relative;
+          &:before {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background-color: #fff;
+            border: 5px solid $main-color;
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          // &:before {
+          //   content: "";
+          //   display: block;
+          //   position: absolute;
+          //   margin-top: 10px;
+          //   left: 50%;
+          //   transform: translateX(-50%);
+          //   width: 15px;
+          //   height: 15px;
+          //   border: 4px solid $main-color;
+          //   border-radius: 100px;
+          // }
+        }
+        .monthBox {
+          li {
+            display: flex;
+            margin-bottom: 20px;
+            .month {
+              font-weight: 700;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#phillosophy {
+  .container {
+    // width: 1200px;
+
+    .conBox {
+      // display: flex;
+
+      img {
+        align-self: flex-start;
+      }
+      .txtBox {
+        position: absolute;
+        margin-top: 0px;
+        transform: translateY(-115%);
+        margin-left: 30px;
+        width: 45%;
+        height: 300px;
+        background-color: rgba(255, 30, 0, 0.514);
+
+        color: #fff;
+        line-height: 1.5;
+
+        .main {
+          font-size: 20px;
+          margin-top: 30px;
+          margin-left: 30px;
+          letter-spacing: 10px;
+        }
+        .sub {
+          font-size: $font-large - 10px;
+          margin-left: 30px;
+
+          &::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            margin: 20px 5px;
+            background-color: #fff;
+          }
+          strong {
+            font-weight: 700;
+          }
+        }
+        .sub2 {
+          font-size: 18px;
+          margin-left: 30px;
+        }
+      }
+    }
+    .conBox2 {
+      .txtBox2 {
+        text-align: center;
+        margin-top: 50px;
+        dt {
+          display: inline-block;
+          width: 200px;
+          height: 50px;
+          line-height: 50px;
+          border: 2px solid $main-color;
+          border-radius: 100px;
+          font-size: 20px;
+        }
+        dd {
+          margin-top: 30px;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .subTxt {
+      display: flex;
+      margin-top: 50px;
+      text-align: center;
+
+      li {
+        flex-basis: 33.33%;
+        border-right: 1px solid #ccc;
+        &:nth-child(3) {
+          border-right: none;
+        }
+
+        h3 {
+          margin-top: 20px;
+          font-size: 20px;
+        }
+        p {
+          margin-top: 10px;
+          font-size: 15px;
+          color: #666;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  .conBox3 {
+    margin-top: 100px;
+    padding: 100px 0;
+
+    background: {
+      color: #eee;
+    }
+    width: 100%;
+    // margin-left: -30%;
+    .title {
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      border: 2px solid $main-color;
+      border-radius: 100px;
+      font-size: 20px;
+      text-align: center;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .inner {
+      .txtBox3 {
+        margin-top: 30px;
+        width: 1200px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+
+        .right {
+          flex-direction: row-reverse;
+        }
+
+        .txt {
+          display: flex;
+          background-color: #fff;
+
+          .sub {
+            width: 50%;
+            margin: 80px 0;
+            text-align: center;
+
+            h4 {
+              font-size: 24px;
+              span {
+                color: $main-color;
+              }
+            }
+            p {
+              margin-top: 30px;
+              color: #666;
+              line-height: 1.3;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#location {
+  #map {
+    width: 100%;
+    height: 500px;
+    background-color: #ccc;
+    margin-bottom: 50px;
+  }
+  .tab {
+    .tabMenu {
+      margin-bottom: 50px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      margin-left: 10px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        left: -5px;
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+#market {
+  .container {
+    .boardTable {
+      text-align: center;
+
+      .marketHead {
+        tr {
+          background-color: #eee;
+          th {
+            border: 1px solid #ccc;
+          }
+        }
+      }
+      .marketBody {
+        border: 1px solid #ccc;
+        .imgTxt {
+          vertical-align: middle;
+
+          img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+          }
+          p {
+            line-height: 1.5;
+          }
+        }
+
+        tr {
+          td {
+            border: 1px solid #ccc;
+
+            color: #666;
+            vertical-align: middle;
+          }
+          a {
+            display: inline-block;
+            width: 130px;
+            height: 40px;
+            border: 1px solid $main-color;
+            border-radius: 10px;
+            line-height: 40px;
+            color: $main-color;
+            transform: scale(1);
+            &:before {
+              @include icon("link", 0);
+              font-size: 20px;
+              margin-right: 5px;
+              vertical-align: bottom;
+            }
+            &:hover {
+              background-color: $main-color;
+              color: #fff;
+              transition: all 0.25s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#notice {
+  #news {
+    margin-bottom: 100px;
+  }
+}
+
+.overlay {
+  background-color: $main-color;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  @include longShadow(darken($main-color, 10), 10);
+  .address {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: $main-color;
+    position: absolute;
+    left: calc(50% - 5px);
+    bottom: -10px;
+  }
+}
+
+@media all and (min-width: 1201px) {
+  .subVisual {
+    #lnb .container .menu {
+      &:hover {
+        ul {
+          display: block !important;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .subVisual {
+    height: clamp(300px, 33.33vw, 400px);
+    .titleBox {
+      margin-top: clamp(0px, 4vw, 50px);
+    }
+  }
+  #introduce,
+  #greeting {
+    .desc {
+      margin-top: clamp(20px, 5vw, 50px);
+      padding: 0 clamp(20px, 6.5vw, 80px);
+      .txtBox {
+        p {
+          margin-bottom: clamp(20px, 4vw, 50px);
+          font-size: clamp(12px, 1.3vw, 16px);
+          text-align: left;
+        }
+      }
+    }
+  }
+  #location {
+    .tabContents {
+      padding: 0 clamp(20px, 4vw, 50px);
+    }
+  }
+  .subContents {
+    .desc {
+      .headTxt {
+        font-size: clamp(20px, 4vw, 48px);
+        margin-bottom: clamp(20px, 5vw, 50px);
+      }
+    }
+  }
+  #phillosophy {
+    .container {
+      .conBox {
+        .txtBox {
+          min-width: 300px;
+          height: clamp(200px, 25vw, 300px);
+
+          .main {
+            font-size: clamp(16px, 1.6vw, 20px);
+            letter-spacing: 2px;
+            margin-left: clamp(15px, 2.5vw, 30px);
+          }
+          .sub {
+            font-size: clamp(18px, 3vw, 38px);
+            margin-left: clamp(15px, 2.5vw, 30px);
+          }
+          .sub2 {
+            font-size: clamp(12px, 1.5vw, 18px);
+            margin-left: clamp(15px, 2.5vw, 30px);
+          }
+        }
+      }
+      .conBox2 {
+        .txtBox2 {
+          dt {
+            font-size: clamp(16px, 1.6vw, 20px);
+          }
+          dd {
+            padding: 0 20px;
+            br {
+              content: "";
+            }
+            font-size: clamp(12px, 1.6vw, 18px);
+          }
+        }
+      }
+      .subTxt {
+        display: block;
+
+        li {
+          display: flex;
+          align-items: center;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #eee;
+          text-align: left;
+
+          img {
+            height: clamp(100px, 15vw, 180px);
+            margin-right: 20px;
+          }
+          br {
+            content: "";
+          }
+          h3 {
+            font-size: clamp(16px, 1.6vw, 20px);
+          }
+          p {
+            font-size: clamp(12px, 1.2vw, 15px);
+          }
+        }
+      }
+    }
+    .conBox3 {
+      .inner {
+        br {
+          content: "";
+        }
+        .txtBox3 {
+          .txt,
+          .right {
+            flex-direction: column-reverse;
+            justify-content: center;
+            img {
+              width: clamp(375px, 58vw, 700px);
+              height: clamp(200px, 33vw, 400px);
+              object-fit: cover;
+              margin: 0 auto;
+            }
+            .sub {
+              width: 100%;
+
+              h4 {
+                font-size: clamp(18px, 2vw, 24px);
+              }
+              p {
+                padding: 0 300px;
+                word-break: keep-all;
+                font-size: clamp(12px, 1.3vw, 16px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 960px) {
+  * {
+    word-break: keep-all;
+  }
+  .subVisual {
+    height: 300px;
+    .titleBox {
+      .subTitle {
+        font-size: clamp(20px, 5vw, 48px);
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  .subContents {
+    .contentsTitle {
+      font-size: clamp(24px, 4vw, 38px);
+      margin: clamp(30px, 8vw, 80px) 0;
+      &:after {
+        margin: clamp(15px, 3vw, 30px) auto;
+      }
+    }
+  }
+  #introduce {
+    .summaryBox {
+      flex-direction: column;
+
+      .txtBox {
+        width: 100%;
+        padding: clamp(30px, 10vw, 80px) 0;
+        .main {
+          font-size: clamp(20px, 5vw, 48px);
+        }
+        .sub {
+          font-size: clamp(12px, 0.2vw, 20px);
+        }
+      }
+    }
+  }
+  #greeting {
+    .container {
+      flex-direction: column;
+      img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        align-self: center;
+      }
+    }
+  }
+  #history {
+    .historyBox {
+      padding-left: 80px;
+      margin-top: clamp(50px, 15vw, 150px);
+      font-size: clamp(12px, 2vw, 16px);
+      line-height: 1.5;
+
+      &:before {
+        left: 50px;
+      }
+      .yearBox {
+        padding: clamp(10px, 5vw, 50px) 0;
+        padding-right: 20px;
+        &:nth-child(2n) {
+          justify-content: flex-start;
+          padding-left: 0;
+          .inner {
+            .year {
+              &:before {
+                left: -40px;
+              }
+            }
+          }
+        }
+        &:nth-child(2n + 1) {
+          text-align: left;
+          .inner {
+            .year {
+              &:before {
+                right: auto;
+                left: -40px;
+              }
+            }
+            .monthBox li {
+              flex-direction: row;
+              .month {
+                margin-left: 0;
+                margin-right: 20px;
+              }
+            }
+          }
+        }
+        .inner {
+          width: 100%;
+          .year {
+            font-size: clamp(24px, 5vw, 48px);
+            margin-bottom: clamp(10px, 3.2vw, 30px);
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+  #location {
+    .tabContents {
+      h4 {
+        font-size: clamp(18px, 2vw, 22px);
+      }
+      tbody {
+        font-size: clamp(14px, 1.8vw, 18px);
+      }
+    }
+  }
+  #phillosophy {
+    .conBox3 {
+      .title {
+        font-size: clamp(16px, 1.6vw, 20px);
+      }
+      .inner {
+        .txtBox3 {
+          .txt,
+          .right {
+            .sub {
+              p {
+                padding: 0 450px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 480px) {
+  .tab {
+    .tabMenu {
+      font-size: 12px;
+      text-align: center;
+      li a {
+        height: 40px;
+      }
+    }
+  }
+}

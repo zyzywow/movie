@@ -1,0 +1,49 @@
+@import "mixin";
+
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  .btn {
+    $btn-color: rgb(255, 168, 7);
+    height: 80px;
+    padding: 0 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: $btn-color;
+    color: #fff;
+    overflow: hidden;
+    @include longShadow(darken($btn-color, 5), 50);
+    box-shadow: 0 10px 0 darken($btn-color, 10);
+    transition: all 0.1s ease-in-out;
+    &:active {
+      box-shadow: 0 0 0 darken($btn-color, 10);
+      transform: translateY(10px);
+    }
+  }
+}
+.txt {
+  margin-top: 100px;
+  width: 200px;
+  border: 1px solid #999;
+  padding: 20px;
+}
+p {
+  @include multiEllipsis(3);
+}
+
+.box {
+  margin-top: 100px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #999;
+  position: relative;
+  .inner {
+    width: 100px;
+    height: 100px;
+    background-color: #f00;
+    @include absCenter();
+  }
+}

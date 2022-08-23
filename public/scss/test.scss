@@ -1,0 +1,69 @@
+//이거는 주석입니다.
+/*
+여기도주석입니다.
+여기도주석입니다.
+*/
+// $변수명 : 변수의 값;
+// 변수의 유효범위는 {}를 기준으로 한다.
+// !global을 flag를 붙이면 전역으로 사용가능하지만 굳이 쓰지않음;
+// 그냥 괄호밖으로빼서쓰면 공통적용
+// ! = flag
+
+//중첩,변수,믹스인 가장중요!
+@import "vars";
+@import "mixin";
+#header {
+  color: "$font-color";
+  background-color: "$gray-color";
+}
+#mainVisual {
+  .slogan {
+    @include absCenter(true, false);
+    @include longShadow;
+  }
+}
+#news ul li {
+  h3 {
+    @include ellipsis;
+  }
+  .desc {
+    @include multiEllipsis(2);
+  }
+}
+
+/*$color: #111;
+#header {
+  .container {
+    display: flex;
+
+    #gnb {
+      color: $color;
+      .list {
+        display: flex;
+        @at-root .box {
+          display: block;
+        }
+        // @at-root 붙이면괄호안에있지만 전역으로가능,근데잘안씀
+        padding: (30px / 10);
+        //계산은 웬만하면 괄호쓰고..
+        background: {
+          url: ("asdasd");
+          size: cover;
+          repeat: no-repeat;
+        }
+        li {
+          &:hover .depth01 {
+            //&는 부모를나타냄
+            color: #f00;
+          }
+          .depth01 {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+.business {
+  color: $color;
+}*/

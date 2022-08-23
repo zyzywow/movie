@@ -1,0 +1,62 @@
+<%- include("include/header");%>
+
+<main id="main">
+  <div id="contents">
+    <h2 class="title"><%= title %></h2>
+    <form action="/register" method="POST" id="join" class="formBox" enctype="multipart/form-data">
+      <!-- enctype="multipart/form-data" - 첨부file전송할때필수!! -->
+      <div class="inputBox">
+        <label>
+          <span class="label">영화제목</span>
+          <input type="text" id="movieTitle" name="movieTitle" placeholder="영화제목을 입력하세요." />
+        </label>
+      </div>
+      <div class="inputBox">
+        <label>
+          <span class="label">개봉날짜</span>
+          <input type="text" id="date" name="date" placeholder="개봉날짜" />
+        </label>
+      </div>
+      <div class="inputBox">
+        <label>
+          <span class="label">장르</span>
+          <div>
+            <ul class="genreList">
+              <li><span>스릴러</span><input type="checkbox" value="스릴러" name="genre" /></li>
+              <li><span>로맨스</span><input type="checkbox" value="로맨스" name="genre" /></li>
+              <li><span>액션</span><input type="checkbox" value="액션" name="genre" /></li>
+              <li><span>코미디</span><input type="checkbox" value="코미디" name="genre" /></li>
+              <li><span>공포</span><input type="checkbox" value="공포" name="genre" /></li>
+              <li><span>드라마</span><input type="checkbox" value="드라마" name="genre" /></li>
+            </ul>
+          </div>
+          <!-- <input type="text" id="genre" name="genre" placeholder="장르를 입력하세요." /> -->
+        </label>
+      </div>
+      <div class="inputBox">
+        <label>
+          <span class="label">줄거리</span>
+          <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
+        </label>
+      </div>
+      <div class="inputBox">
+        <label>
+          <span class="label">평점</span>
+          <input type="number" max="5" min="0" step="0.1" id="point" name="point" />
+        </label>
+      </div>
+      <div class="inputBox">
+        <label>
+          <span class="label">포스터</span>
+          <input type="file" name="poster" id="poster" />
+        </label>
+      </div>
+      <div class="btns">
+        <button id="btnJoin">확인</button>
+        <button type="reset" class="red">취소</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<%- include("include/footer");%>

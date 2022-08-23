@@ -1,0 +1,23 @@
+<%- include("include/header");%>
+
+<main id="main">
+  <div id="contents">
+    <h2 class="title"><%= title %></h2>
+    <div class="detailPage">
+      <ul>
+        <li><span>제목:</span><%= result.movieTitle %></li>
+        <li><span>개봉일:</span><%= result.date %></li>
+        <li><span>장르:</span><%= result.genre %></li>
+        <li><span>평점:</span><%= result.point %></li>
+        <li class="desc"><span>줄거리</span><%= result.desc %></li>
+        <li><img src="<%= result.poster %>" alt="<%= result.movieTitle %>" /></li>
+      </ul>
+    </div>
+    <div class="btns">
+      <a href="/list">목록</a>
+      <a href="/">메인페이지</a>
+    </div>
+  </div>
+</main>
+
+<%- include("include/footer");%>

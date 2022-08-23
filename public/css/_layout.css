@@ -1,0 +1,223 @@
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+#header {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  color: #fff;
+}
+#header::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  position: absolute;
+  top: 100px;
+  pointer-events: none;
+  /* 사용자의 마우스에 반응하지 않겠다. 앱솔루트잡혀서 depth1,2사이에 배너가 끊길때 써도 좋음 */
+}
+
+#header .container {
+  /* 전체 넓이를 1920이상 쓰지 않겠다. */
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+#header .online {
+  margin-top: 10px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-right: 130px;
+  width: 180px;
+  height: 45px;
+  border: 2px solid #999;
+  border-radius: 100px;
+  transition: all 0.25s ease;
+}
+#header .online:hover {
+  border: 2px solid #bf0c14;
+  background-color: #bf0c14;
+  color: #fff;
+}
+
+#logo {
+  position: absolute;
+  right: 110%;
+  top: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+.online {
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  height: 60px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  /* 디폴트값은 content-box,보더값포함안함
+  border-box 는 높이에 보더값포함해서 반영한다. */
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border-radius: 100px;
+  /* 엘리먼트의 높이에 보더는 포함하지 않는다. 만약 border를 포함한 넓이를 설정하려면
+  box-sizing:border-box로 하면 된다. */
+}
+
+#gnb .list {
+  display: flex;
+}
+#gnb .list .depth01 {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase; /*lowercase,uppercase,capitalize;
+  제목이나 많은 글자대소문자변경하는타입 소문자/대문자/첫글자대문자*/
+  display: flex;
+  align-items: center;
+  /* line-height: 100px; */
+  /* 글자일때 그리고 한줄일때사용, 세로로중앙에위치하는방법 */
+  height: 100px;
+  padding: 0 50px;
+  position: relative;
+}
+#gnb .list .depth01::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  transform: scaleX(0);
+  transition: transform 0.25s ease-in-out;
+}
+
+#gnb .list > li:hover .depth01 {
+  background-color: #bf0c14;
+  color: #fff;
+}
+/* 바로아래에자식들만지정하는꺽쇄 > ex)li밑에또li중복지정안됌 각각의클래스없어도 */
+
+#gnb .list > li:hover .depth01::after {
+  transform: scaleX(1);
+}
+
+#gnb .list > li:hover .depth02 {
+  display: block;
+}
+
+#gnb .list .depth01:hover {
+  background-color: #bf0c14;
+  color: #fff;
+}
+
+#gnb .list .depth01:hover + .depth02 {
+  display: block;
+}
+/* +는 형제관계에서는 적용가능 한번에처리하기 (부모랑자식은안됌) */
+
+#gnb .list .depth02 {
+  text-align: center; /*글자정렬타입*/
+  padding: 30px 10px;
+  display: none;
+  background-color: #bf0c14;
+  color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+#gnb .list .depth02 li a {
+  display: block;
+  padding: 10px 0;
+}
+#gnb .list .depth02 li a:hover {
+  background-color: #86080e;
+}
+/* gnb end */
+
+/* padding은 내영역으로 포함됨, 기준점에서 ~px떨어지는만큼 클릭범위가됨
+글자가커지면 전체적인 공간도 커짐 작으면 작아지고, 글자에 기준으로 ~px만큼 띄우기때문
+margin은 공간만 띄움, 띄우는 공간은 클릭범위 x */
+
+#footer {
+  background-color: #333;
+  color: #ccc;
+}
+#footer .utilMenu {
+  border-bottom: 1px solid #666;
+}
+#footer .utilMenu ul {
+  display: flex;
+  justify-content: center;
+}
+#footer .utilMenu ul li {
+  position: relative;
+}
+#footer .utilMenu ul li::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 15px;
+  background-color: #ccc;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#footer .utilMenu ul li:nth-child(1):after {
+  display: none;
+}
+
+#footer .utilMenu ul li a {
+  display: block;
+  padding: 20px 40px;
+}
+
+#footer .utilMenu ul li a strong {
+  color: #fff;
+  font-weight: 500;
+}
+#footer .addressBox {
+  padding: 50px 0;
+}
+
+#footer .addressBox .container {
+  display: flex;
+  position: relative;
+}
+#footer .addressBox .tel {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+#footer .addressBox .tel strong {
+  font-size: 40px;
+  letter-spacing: -0.01em;
+  /* 글자와 글자사이 넓히거나 줄이는것 */
+  margin-top: 10px;
+}
+#footer .addressBox .address {
+  margin-left: 50px;
+}
+
+#footer .addressBox .address .info {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+#footer .addressBox .address .info span {
+  margin-right: 10px;
+}
+#footer .addressBox .address .copyright {
+  color: #999;
+}

@@ -1,0 +1,60 @@
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin multiEllipsis($line: 3, $lineHeight: 1.5) {
+  line-height: $lineHeight;
+  height: ($lineHeight * 1 * $line);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  /* autoprefixer: off */
+}
+
+@mixin absCenter($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if($horizontal) {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if($vertical) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@mixin longShadow($shadowColor: rgba(0, 0, 0, 1), $limit: 20) {
+  $shadow: "";
+  @for $i from 1 to ($limit - 1) {
+    $shadow: $shadow + $i + "px " + $i + "px 0px " + $shadowColor + ",";
+  }
+  $shadow: $shadow + $limit + "px " + $limit + "px 0px " + $shadowColor;
+  $shadow: unquote($shadow);
+  text-shadow: $shadow;
+  //연산기호는 떨어뜨려 띄어쓰기
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin box($w: 10px, $h: 10px, $bg: #000) {
+  display: block;
+  width: $w;
+  height: $h;
+  background-color: $bg;
+}
+
+@mixin icon($code, $margin: 10px) {
+  content: $code;
+  font-family: "Material Icons";
+  display: inline-block;
+  margin-left: $margin;
+}

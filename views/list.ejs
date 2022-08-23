@@ -1,0 +1,33 @@
+<%- include("include/header");%>
+
+<main id="main">
+  <div id="contents">
+    <h2 class="title"><%= title %></h2>
+    <div class="table">
+      <div class="head">
+        <span style="width: 10%">NO</span>
+        <span>Subject</span>
+        <span style="width: 20%">Date</span>
+      </div>
+      <ul class="body">
+        <% list.forEach((item,idx)=> { %>
+        <li>
+          <div class="column"><%= (idx+1) %></div>
+          <div class="column subject"><a href="/movie/<%= item.movieTitle%>"><%= item.movieTitle%></a></div>
+          <div class="column"><%= item.date%></div>
+          <!-- <div><span>genre :</span><%= item.genre%></div>
+          <div><span>desc : </span><%= item.desc%></div>
+          <div><span>point : </span><%= item.point%></div>
+          <div><span>poster :</span><img src="<%= item.poster%>" alt="" /></div> -->
+        </li>
+        <% })%>
+      </ul>
+    </div>
+    <div class="btns">
+      <a href="/">메인페이지</a>
+      <a href="/insert">글쓰기</a>
+    </div>
+  </div>
+</main>
+
+<%- include("include/footer");%>

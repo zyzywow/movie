@@ -1,0 +1,40 @@
+<%- include("include/header");%>
+<main id="main">
+  <div id="contents">
+    <h2 class="title"><%= title %></h2>
+    <div class="myPage">
+      <div class="infoBox">
+        <span class="label">ID</span>
+        <div><%= userInfo.userID %></div>
+      </div>
+      <div class="infoBox">
+        <span class="label">Name</span>
+        <div><%= userInfo.userName %></div>
+      </div>
+      <div class="infoBox">
+        <span class="label">Email</span>
+        <div><%= userInfo.userEmail %></div>
+      </div>
+      <div class="infoBox">
+        <span class="label">Address</span>
+        <div><%= userInfo.userAddress %></div>
+      </div>
+      <div class="infoBox">
+        <span class="label">ZipCode</span>
+        <div><%= userInfo.userZipcode %></div>
+      </div>
+      <div class="infoBox">
+        <span class="label">Job</span>
+        <div><%= userInfo.userJob %></div>
+      </div>
+    </div>
+    <div class="btns">
+      <a href="/modify">회원정보수정</a>
+      <a href="/delete">회원탈퇴</a>
+    </div>
+    <!-- pass입력하는곳 이동 , 패스워드입력후 버튼클릭 ===면 탈퇴 아니면 패스워드다시입력 -->
+    <a href="/">메인</a>
+  </div>
+</main>
+
+<%- include("include/footer");%>

@@ -1,0 +1,427 @@
+@import "vars";
+@import "mixin";
+
+.contentsTable {
+  width: 100%;
+  border-top: 2px solid $main-color;
+  tbody,
+  thead {
+    th {
+      background-color: #f8f8f8;
+    }
+    th,
+    td {
+      text-align: center;
+      padding: 15px 10px;
+      border-bottom: 1px solid #999;
+      border-left: 1px solid #999;
+      &:nth-child(1) {
+        border-left: none;
+      }
+    }
+  }
+}
+.boardTable {
+  width: 100%;
+  border-top: 2px solid $main-color;
+  tbody,
+  thead {
+    th,
+    td {
+      padding: 15px 10px;
+      border-bottom: 1px solid #999;
+      text-align: center;
+    }
+  }
+  tbody {
+    tr:nth-child(2n) {
+      background-color: #999;
+    }
+  }
+  thead {
+    font-weight: 500;
+  }
+  .subject {
+    text-align: left;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+  }
+  a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1px;
+    border-radius: 3px;
+    &.first {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_double_arrow_left", 0);
+      }
+    }
+    &.prev {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("chevron_left", 0);
+      }
+    }
+    &.last {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_double_arrow_right", 0);
+      }
+    }
+    &.next {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("chevron_right", 0);
+      }
+    }
+    &.active {
+      background-color: $main-color;
+      color: #fff;
+    }
+  }
+}
+
+.searchForm {
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  padding: 80px 150px;
+  #searchTxt {
+    height: 50px;
+    padding: 0 10px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    margin-right: 5px;
+    flex-grow: 1;
+  }
+  #searchCategory {
+    width: 120px;
+    height: 50px;
+    padding: 0 10px;
+    border: 1px solid #999;
+    margin-right: 5px;
+  }
+  button {
+    width: 80px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
+.btns {
+  display: flex;
+  justify-content: center;
+  .btn {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    overflow: hidden;
+    padding: 0 40px;
+    border-radius: 100px;
+    background-color: $main-color;
+    @include longShadow(darken($main-color, 10), 40);
+    margin: 0 5px;
+    &.cancel {
+      background-color: #999;
+      @include longShadow(darken(#999, 10), 40);
+    }
+  }
+}
+
+// 반응형 table만들기...
+// 테이블 반응형만들때(table-cell)는 부모자식간에 중간에 뭐가껴있으면적용안됨. 딱 부모랑 자식만
+.board {
+  .table {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-top: 2px solid #333;
+    .thead {
+      display: table-header-group;
+      background-color: #f8f8f8;
+      font-weight: 500;
+    }
+    .tbody {
+      display: table-row-group;
+      width: 100%;
+      .row {
+        display: table-row;
+        .title {
+          text-align: left;
+        }
+      }
+    }
+    .column {
+      display: table-cell;
+      padding: 20px 10px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+    &.list {
+      .tbody {
+        .row {
+          transition: all 0.25s ease;
+          &:nth-child(2n) {
+            background-color: #f8f8f8;
+          }
+          &:hover {
+            background-color: #111;
+            color: #fff;
+          }
+        }
+      }
+    }
+    &.view {
+      .thead {
+        display: block;
+        padding: 20px;
+        .title {
+          font-size: 18px;
+          margin-bottom: 15px;
+        }
+        dl {
+          display: flex;
+          dt {
+            margin-left: 30px;
+            margin-right: 10px;
+            &:nth-child(1) {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+      .tbody {
+        display: block;
+        border-bottom: 1px solid #ccc;
+        .contents {
+          padding: 20px;
+          line-height: 1.5;
+        }
+      }
+    }
+    &.write {
+      .thead {
+        .column {
+          padding: 0;
+        }
+      }
+      .tbody {
+        .column {
+          input[type="text"],
+          textarea {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            padding: 0 15px;
+          }
+          textarea {
+            resize: none;
+            height: 250px;
+            padding: 15px;
+            font-family: "Noto Sans KR";
+            // textarea 폰트패밀리 상속받지않아서 적용시키려면 다시써야함
+          }
+        }
+        .column {
+          text-align: left;
+        }
+        .th {
+          background-color: #f8f8f8;
+          vertical-align: middle;
+          text-align: center;
+        }
+        .required {
+          &:before {
+            content: "*";
+            display: inline-block;
+            color: #f00;
+            margin-right: 5px;
+          }
+        }
+        .tel,
+        .password {
+          .item {
+            display: flex;
+            align-items: center;
+            .seperation {
+              margin: 0 10px;
+            }
+            .alert {
+              white-space: nowrap;
+              margin-left: 20px;
+            }
+            input {
+              flex-grow: 1;
+            }
+          }
+        }
+      }
+    }
+    .fileBox {
+      width: 100%;
+      display: flex;
+      margin-right: 20px;
+      label {
+        width: 100px;
+        height: 40px;
+        background-color: $main-color;
+        color: #fff;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+      }
+      input[type="file"] {
+        width: 0;
+        height: 0;
+        position: absolute;
+        overflow: hidden;
+        padding: 0;
+        border: none;
+      }
+      input[type="text"] {
+        height: 40px;
+        width: calc(100% - 110px);
+        border: 1px solid #ccc;
+        padding: 0 15px;
+        box-sizing: border-box;
+      }
+    }
+  }
+  .btns {
+    margin-top: 50px;
+    color: #fff;
+    &.right {
+      justify-content: flex-end;
+    }
+    &.left {
+      justify-content: flex-start;
+    }
+  }
+}
+
+@media all and (max-width: 1200px) {
+  .board {
+    padding: 0 50px;
+  }
+  .searchForm {
+    margin: 0 50px;
+    padding: clamp(20px, 6.6vw, 80px) clamp(20px, 12.5vw, 150px);
+    button {
+      min-width: 50px;
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  .board {
+    padding: 0 20px;
+
+    .table {
+      .thead {
+        display: none;
+      }
+      .tbody {
+        .row {
+          display: flex;
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 10px;
+          border-bottom: 1px solid #ccc;
+          flex-wrap: wrap;
+          box-sizing: border-box;
+        }
+      }
+      .column {
+        display: block;
+        font-size: clamp(12px, 2.5vw, 16px);
+        border-bottom: none;
+        padding: 0;
+        margin-right: 15px;
+        box-sizing: border-box;
+        &:before {
+          content: attr(data-label);
+          //html에 data값이 있으면 가져와 쓰겠다.
+          display: inline-block;
+          margin-right: 5px;
+        }
+        &.title {
+          width: 100%;
+          margin-bottom: 15px;
+          font-size: 16px;
+          @include ellipsis;
+          &:before {
+            display: none;
+          }
+        }
+        &.no {
+          display: none;
+        }
+      }
+      &.view {
+        .thead {
+          padding: 20px clamp(10px, 3vw, 20px);
+          .title {
+            font-size: clamp(16px, 3vw, 18px);
+            margin-bottom: 10px;
+          }
+          dl {
+            font-size: clamp(12px, 2.5vw, 16px);
+          }
+        }
+        .tbody {
+          .contents {
+            padding: 20px clamp(10px, 3vw, 20px);
+            font-size: clamp(12px, 3vw, 16px);
+          }
+        }
+      }
+      &.write {
+        .tbody {
+          .row {
+            padding: clamp(10px, 3vw, 20px) 0;
+            .column {
+              width: 100%;
+              &.th {
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .searchForm {
+    margin: 0;
+  }
+  .pagination {
+    a {
+      width: 30px;
+      height: 30px;
+    }
+    ul {
+      .hide {
+        display: none;
+      }
+    }
+  }
+}
