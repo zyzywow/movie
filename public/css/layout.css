@@ -31,7 +31,6 @@ a {
   background-color: #111;
   color: #fff;
   height: 60px;
-  margin-top: 100px;
   align-items: center;
 }
 
@@ -47,6 +46,16 @@ a {
   text-transform: uppercase;
   border-bottom: 1px solid #ccc;
   padding-bottom: 50px;
+}
+#contents .mainImg {
+  margin: 0 auto;
+  width: 400px;
+  height: 500px;
+  background-image: url("../images/ajeet-mestry-UBhpOIHnazM-unsplash.jpg");
+  background-size: cover;
+  border: none;
+  outline: none;
+  border-radius: 10px;
 }
 #contents .btns {
   display: flex;

@@ -89,12 +89,42 @@ app.get("/movie/:title", (req, res) => {
   // console.log(req.query.id);
   console.log(req.params.title);
   const movieTitle = req.params.title;
-  db.collection("movie").findOne({ movieTitle: movieTitle }, (ree, result) => {
+  db.collection("movie").findOne({ movieTitle: movieTitle }, (err, result) => {
     if (result) {
       res.render("movie", { title: "detail", result: result });
     }
   });
 });
+app.get("/modify", (req, res) => {
+  res.render("modify", { title: "modify" });
+});
+// app.post("/modify", (req, res) => {
+//   const movieTitle = req.body.movieTitle;
+//   const date = req.body.date;
+//   const genre = Array.isArray(req.body.genre) ? req.body.genre.join("/") : req.body.genre;
+//   const point = req.body.point;
+//   const desc = req.body.desc;
+//   const poster = req.body.poster;
+//   db.collection("movie").updateOne(
+//     {
+//       $set: {
+//         movieTitle: movieTitle,
+//         date: date,
+//         genre: genre,
+//         point: point,
+//         desc: desc,
+//         poster: poster,
+//       },
+//     },
+//     (err, result) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//       // console.log(result);
+//       res.send(`<script>alert("정보 수정이 되었습니다.");location.href="/list";</script>`);
+//     }
+//   );
+// });
 
 app.listen(PORT, () => {
   console.log(`${PORT}에서 서버 대기중`);
